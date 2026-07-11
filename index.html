@@ -65,6 +65,35 @@
     .contacts-item { display: flex; align-items: center; gap: 6px; }
     .contacts-item .icon { opacity: 0.7; font-size: 14px; }
 
+    .header .tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .stats-row {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 20px;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .stat-num {
+      font-size: 24px;
+      font-weight: 800;
+      color: #e94560;
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
     /* ── Body Layout ── */
     .body { display: grid; grid-template-columns: 260px 1fr; }
 
@@ -237,6 +266,25 @@
       font-weight: 600;
     }
 
+    /* Achievements */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .ach-item {
+      background: #f8f9fc;
+      border: 1px solid #eaecf0;
+      border-radius: 6px;
+      padding: 9px 13px;
+      font-size: 12.5px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ach-item .ach-icon { font-size: 14px; flex-shrink: 0; }
+
     /* Game table */
     .game-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
     .game-table th {
@@ -280,12 +328,23 @@
   <div class="header">
     <h1>陶 伟</h1>
     <div class="intent">AI 产品经理 · 游戏 AI 产品方向 · AI Native</div>
+    <div class="tagline">Building AI Products with LLMs · AI Agents · AIGC · Game AI</div>
+    <div class="stats-row">
+      <div class="stat-item"><span class="stat-num">380+</span><span class="stat-label">AI Projects</span></div>
+      <div class="stat-item"><span class="stat-num">150+</span><span class="stat-label">AI Tools Built</span></div>
+      <div class="stat-item"><span class="stat-num">10+</span><span class="stat-label">Years Experience</span></div>
+      <div class="stat-item"><span class="stat-num">60+</span><span class="stat-label">GUI Products</span></div>
+    </div>
     <div class="contacts">
       <div class="contacts-item"><span class="icon">📱</span> 13521339444</div>
       <div class="contacts-item"><span class="icon">📧</span> zr_nian_ni@163.com</div>
       <div class="contacts-item"><span class="icon">💬</span> 微信：tw1982tw</div>
       <div class="contacts-item"><span class="icon">💻</span>
         <a href="https://github.com/tiandaoyuxi" target="_blank">github.com/tiandaoyuxi</a>
+      </div>
+      <div class="contacts-item"><span class="icon">🎮</span>
+        <a href="https://rgm.games/search" target="_blank">rgm.games/search</a>
+        <span style="font-size:11px;color:rgba(255,255,255,0.4);margin-left:4px;">在线产品</span>
       </div>
     </div>
   </div>
@@ -422,57 +481,79 @@
         <div class="section-title"><span class="icon">👤</span> 个人简介</div>
         <p>10余年企业数字化及AI应用建设经验，具备IT管理、AI平台建设、<strong>AI工具产品设计</strong>及AI产品落地的复合背景。近年来专注于大语言模型（LLM）、多模态模型、<strong>AI Agent</strong>、RAG、AIGC等方向，持续开展AI产品设计与智能工作流实践。</p>
         <p>累计主导完成 <strong>380+ AI相关产品及工具设计</strong>，开发 <strong>150+ AI工具</strong>（其中60+具备GUI交互界面），覆盖文本、语音、图像、视频、多模态、知识库、自动化工作流等多个方向，具备从<strong>需求分析、产品设计、技术验证到落地实施</strong>的完整实践经验。</p>
-        <p>长期关注AI在游戏研发中的应用，持续研究 <strong>AI NPC Agent</strong>、多模态内容生成、AI辅助策划与美术生产工具，熟悉 RPG Maker MZ 开发流程，了解 Unity、Unreal Engine 等游戏研发生态。</p>
+        <p>长期关注AI在游戏研发中的应用，参与并主导 <a href="https://rgm.games/search" target="_blank" style="color:#e94560;text-decoration:none;font-weight:600;">RGM.games</a> AI 游戏搜索模块的产品设计与技术实现（LLM + RAG），持续研究 <strong>AI NPC Agent</strong>、多模态内容生成、AI辅助策划与美术生产工具，熟悉 RPG Maker MZ 开发流程，了解 Unity、Unreal Engine 等游戏研发生态。</p>
       </div>
 
       <!-- AI Projects -->
       <div class="section">
         <div class="section-title"><span class="icon">🚀</span> AI 产品项目经历</div>
 
+        <div class="project-card" style="border-color:#e94560;">
+          <h4>RGM.games · AI 游戏搜索模块 <span style="font-size:11px;color:#999;font-weight:400;">· 线上产品</span></h4>
+          <div class="project-role">核心成员 · AI 搜索方案产品设计 + 技术实现　<a href="https://rgm.games/search" target="_blank" style="font-size:11px;color:#7ec8e3;text-decoration:none;margin-left:8px;">→ 在线体验</a></div>
+          <ul>
+            <li>洞察用户痛点：玩家只记得游戏片段却叫不出名字，设计「用描述找游戏」的 AI 搜索产品形态</li>
+            <li>负责 AI 搜索整体方案设计：基于 LLM + RAG 构建语义理解搜索链路，支持模糊描述、记忆片段等非结构化输入</li>
+            <li>主导技术实现：游戏数据向量化入库、语义检索、LLM 理解意图并匹配结果的完整 Pipeline</li>
+            <li>负责产品交互设计：双模式入口（描述记忆 / 直接搜索），降低用户使用门槛，提升搜索成功率</li>
+            <li>持续根据用户反馈迭代搜索策略与 Prompt 设计，优化召回精度与结果相关性</li>
+          </ul>
+          <div class="project-result">✦ 已上线运行的 C 端游戏 AI 产品，真实用户验证的 LLM + RAG 游戏搜索方案</div>
+        </div>
+
         <div class="project-card">
           <h4>企业 AI 知识库平台</h4>
           <div class="project-role">AI 产品负责人 + 技术负责人</div>
           <ul>
-            <li>调研多部门需求，梳理文档检索、AI 问答、知识沉淀等使用场景</li>
-            <li>设计知识库信息架构与权限管理体系，规划 RAG 检索方案实现语义搜索</li>
-            <li>设计多模型切换能力与 AI Agent 工作流，集成 MCP 工具调用</li>
-            <li>负责 PRD 输出、功能规划、UI 设计、技术选型及项目推进全流程</li>
+            <li>企业内部知识分散、检索效率低，设计并落地语义化 AI 知识库，支持自然语言问答</li>
+            <li>规划 RAG 检索方案 + 多模型切换 + Agent 工作流 + MCP 工具调用，实现统一 AI 入口</li>
+            <li>负责全流程：用户调研 → PRD → 信息架构 → UI 设计 → 技术选型 → 上线推进</li>
           </ul>
-          <div class="project-result">✦ 企业内部落地，显著提升知识查询效率，形成统一 AI 入口</div>
+          <div class="project-result">✦ 企业内部落地，知识查询效率显著提升，消除部门信息孤岛</div>
         </div>
 
         <div class="project-card">
           <h4>企业 AI Agent 办公平台</h4>
           <div class="project-role">AI 产品负责人</div>
           <ul>
-            <li>规划 AI 客服、AI 办公助手、AI 日报、AI 会议纪要、AI 翻译等 Agent 功能</li>
-            <li>设计 AI 审批流与自动化任务工作流，降低员工重复性工作</li>
-            <li>基于业务部门反馈持续迭代 Agent 对话能力与流程设计</li>
-            <li>负责产品功能规划、需求分析、交互设计、版本迭代管理</li>
+            <li>员工大量时间消耗在日报、会议纪要、翻译等重复性工作，设计 AI Agent 统一处理</li>
+            <li>覆盖 AI 客服、AI 办公助手、AI 日报、AI 会议纪要、AI 审批流、自动化任务工作流</li>
+            <li>基于真实业务反馈持续迭代 Agent 对话能力与工作流，推动多部门落地</li>
           </ul>
-          <div class="project-result">✦ 落地多个业务场景，提升办公效率，减少重复性操作</div>
+          <div class="project-result">✦ 落地多个业务场景，减少重复性人工操作，提升团队协作效率</div>
         </div>
 
         <div class="project-card">
           <h4>AI 内容生成平台（AIGC）</h4>
           <div class="project-role">产品负责人</div>
           <ul>
-            <li>设计文本、图像、视频、语音、数字人生成工作流，规划 Prompt 模板管理</li>
-            <li>整合 ComfyUI 工作流，设计 GUI 操作界面，优化 LoRA 模型管理功能</li>
-            <li>负责产品架构设计、功能规划、用户培训与内部推广</li>
+            <li>内容团队手工生产成本高、速度慢，设计多模态 AIGC 平台覆盖图像、视频、语音、数字人</li>
+            <li>整合 ComfyUI 工作流 + Prompt 模板管理 + LoRA 模型管理，设计面向非技术用户的 GUI</li>
+            <li>负责产品架构设计、功能规划、用户培训与内部推广，推动团队从工具到产品的转变</li>
           </ul>
-          <div class="project-result">✦ 支持企业内部 AIGC 生产，显著提升内容制作效率</div>
+          <div class="project-result">✦ 支持企业内部 AIGC 生产全流程，内容制作效率大幅提升</div>
+        </div>
+
+        <div class="project-card">
+          <h4>游戏 AI NPC 对话系统（AI 酒吧项目）</h4>
+          <div class="project-role">独立产品设计 & 开发</div>
+          <ul>
+            <li>传统游戏 NPC 对话固定、无上下文记忆，玩家沉浸感差，设计 LLM 驱动的动态 NPC 系统</li>
+            <li>基于 Ollama 本地部署 LLM，实现角色人设注入、多轮对话、持久化角色记忆</li>
+            <li>结合 RPG Maker MZ 游戏引擎，完整实现 AI NPC → 剧情生成 → 角色记忆的产品闭环</li>
+          </ul>
+          <div class="project-result">✦ 完整可运行 Demo，AI NPC 具备持续记忆与动态剧情响应能力</div>
         </div>
 
         <div class="project-card">
           <h4>AI 工具产品矩阵（150+ 工具）</h4>
           <div class="project-role">产品设计 & 开发负责人</div>
           <ul>
-            <li>主导设计 150+ AI 工具产品，其中 60+ 具备完整 GUI 交互界面</li>
-            <li>覆盖 AI 办公、AI 生成、AI 视频处理、AI 语音、AI 图像、AI 自动化等方向</li>
-            <li>每个工具完整经历需求分析、产品规划、交互设计、开发推进、版本迭代</li>
+            <li>主导设计 150+ AI 工具产品，其中 60+ 具备完整 GUI 交互界面，形成完整产品闭环</li>
+            <li>覆盖 AI 办公、AIGC 生成、AI 视频处理、AI 语音、AI 图像、AI 自动化等方向</li>
+            <li>每个工具经历完整产品周期：需求分析 → 产品规划 → 交互设计 → 开发 → 版本迭代</li>
           </ul>
-          <div class="project-result">✦ 形成 AI 工具产品设计规范与 Prompt 工程方法论</div>
+          <div class="project-result">✦ 形成 AI 工具产品设计规范与 Prompt 工程方法论，部分工具开源发布</div>
         </div>
       </div>
 
@@ -506,6 +587,22 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Achievements -->
+      <div class="section">
+        <div class="section-title"><span class="icon">⭐</span> Selected Achievements</div>
+        <div class="achievements-grid">
+          <div class="ach-item"><span class="ach-icon">🤖</span>独立设计并落地 3 个企业级 AI 产品（0→1）</div>
+          <div class="ach-item"><span class="ach-icon">🎮</span>完整实现 LLM 驱动的 AI NPC 对话 + 角色记忆系统</div>
+          <div class="ach-item"><span class="ach-icon">🌐</span>主导设计并上线 C 端游戏 AI 搜索产品（rgm.games）</div>
+          <div class="ach-item"><span class="ach-icon">🛠️</span>主导开发 150+ AI 工具，60+ 具备完整 GUI 界面</div>
+          <div class="ach-item"><span class="ach-icon">🧠</span>集成 LLM + Agent + RAG + OCR + TTS 多模态能力</div>
+          <div class="ach-item"><span class="ach-icon">⚙️</span>本地私有化部署 Ollama / vLLM / ComfyUI 全套平台</div>
+          <div class="ach-item"><span class="ach-icon">📐</span>具备完整 AI 产品设计周期：PRD → 原型 → 上线 → 迭代</div>
+          <div class="ach-item"><span class="ach-icon">🎲</span>长期研究 RPG Maker MZ + AI 工具链游戏生产流程</div>
+          <div class="ach-item"><span class="ach-icon">🔄</span>设计多个企业 AI Workflow 自动化流程并落地运行</div>
+        </div>
       </div>
 
       <!-- Work Experience -->
