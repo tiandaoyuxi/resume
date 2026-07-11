@@ -318,8 +318,102 @@
     @media print {
       body { background: #fff; padding: 0; }
       .page { box-shadow: none; border-radius: 0; }
+      .video-wrap { display: none; }
     }
-  </style>
+
+    /* ── Video Player ── */
+    .video-wrap {
+      position: relative;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      width: 100%;
+    }
+    .video-wrap video {
+      width: 100%; height: 100%;
+      display: block;
+      object-fit: contain;
+      cursor: pointer;
+    }
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.35);
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .video-overlay.hidden { opacity: 0; }
+    .play-big-btn {
+      background: rgba(233,69,96,0.85);
+      border: none;
+      border-radius: 50%;
+      width: 72px; height: 72px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      pointer-events: all;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .play-big-btn:hover { background: #e94560; transform: scale(1.08); }
+
+    .video-controls {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+      padding: 18px 12px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .video-wrap:hover .video-controls,
+    .video-wrap.paused .video-controls { opacity: 1; }
+    .vc-btn {
+      background: none; border: none;
+      color: #fff; cursor: pointer;
+      display: flex; align-items: center;
+      padding: 4px; border-radius: 4px;
+      transition: color 0.15s;
+      flex-shrink: 0;
+    }
+    .vc-btn:hover { color: #e94560; }
+    .vc-left { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .vc-time { font-size: 11px; color: rgba(255,255,255,0.75); white-space: nowrap; }
+    .vc-progress-wrap { flex: 1; padding: 6px 0; cursor: pointer; }
+    .vc-progress-bg {
+      position: relative;
+      height: 4px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 2px;
+    }
+    .vc-progress-bg:hover .vc-progress-thumb { opacity: 1; }
+    .vc-progress-fill {
+      height: 100%; background: #e94560;
+      border-radius: 2px; width: 0%;
+      pointer-events: none;
+    }
+    .vc-progress-thumb {
+      position: absolute;
+      top: 50%; right: -6px;
+      transform: translateY(-50%);
+      width: 12px; height: 12px;
+      background: #fff; border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.15s;
+      pointer-events: none;
+      margin-left: -6px;
+    }
+    .vc-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .vc-volume {
+      width: 64px; height: 4px;
+      accent-color: #e94560;
+      cursor: pointer;
+    }
+    </style>
 </head>
 <body>
 <div class="page">
@@ -484,6 +578,50 @@
         <p>长期关注AI在游戏研发中的应用，参与并主导 <a href="https://rgm.games/search" target="_blank" style="color:#e94560;text-decoration:none;font-weight:600;">RGM.games</a> AI 游戏搜索模块的产品设计与技术实现（LLM + RAG），持续研究 <strong>AI NPC Agent</strong>、多模态内容生成、AI辅助策划与美术生产工具，熟悉 RPG Maker MZ 开发流程，了解 Unity、Unreal Engine 等游戏研发生态。</p>
       </div>
 
+      <!-- Portfolio Video -->
+      <div class="section">
+        <div class="section-title"><span class="icon">🎬</span> 作品集演示</div>
+        <div class="video-wrap">
+          <video
+            id="portfolioVideo"
+            src="作品集_noaudio.mp4"
+            preload="metadata"
+          ></video>
+          <div class="video-overlay" id="videoOverlay">
+            <button class="play-big-btn" id="playBigBtn" aria-label="播放">
+              <svg viewBox="0 0 24 24" fill="white" width="48" height="48"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="video-controls" id="videoControls">
+            <div class="vc-left">
+              <button class="vc-btn" id="playPauseBtn" aria-label="播放/暂停">
+                <svg id="iconPlay" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+                <svg id="iconPause" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              </button>
+              <span class="vc-time" id="vcTime">0:00 / 0:00</span>
+            </div>
+            <div class="vc-progress-wrap">
+              <div class="vc-progress-bg" id="progressBg">
+                <div class="vc-progress-fill" id="progressFill"></div>
+                <div class="vc-progress-thumb" id="progressThumb"></div>
+              </div>
+            </div>
+            <div class="vc-right">
+              <button class="vc-btn" id="muteBtn" aria-label="静音">
+                <svg id="iconVol" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                <svg id="iconMute" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              </button>
+              <input class="vc-volume" id="volumeSlider" type="range" min="0" max="1" step="0.05" value="1" aria-label="音量" />
+              <button class="vc-btn" id="fullscreenBtn" aria-label="全屏">
+                <svg id="iconFs" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                <svg id="iconExit" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:#999;margin-top:8px;text-align:center;">涵盖 AI 工具产品、游戏 AI、AIGC 生成、AI NPC 等方向的实际演示合集</p>
+      </div>
+
       <!-- AI Projects -->
       <div class="section">
         <div class="section-title"><span class="icon">🚀</span> AI 产品项目经历</div>
@@ -510,7 +648,7 @@
             <li>策划并执行平台推广活动，探索 AI 游戏创作社区运营策略</li>
             <li>多模态 AIGC 技术实践：图像生成、交互逻辑生成、游戏内容生成</li>
           </ul>
-          <div class="project-result">✦ 已上线运行的 AI 游戏 UGC 平台。</div>
+          <div class="project-result">✦ 已上线运行的 AI 游戏 UGC 平台。/div>
         </div>
 
         <div class="project-card">
@@ -704,5 +842,106 @@
   </div>
 
 </div>
+
+<script>
+(function() {
+  const video      = document.getElementById('portfolioVideo');
+  const overlay    = document.getElementById('videoOverlay');
+  const playBigBtn = document.getElementById('playBigBtn');
+  const wrap       = video.closest('.video-wrap');
+  const playPause  = document.getElementById('playPauseBtn');
+  const iconPlay   = document.getElementById('iconPlay');
+  const iconPause  = document.getElementById('iconPause');
+  const vcTime     = document.getElementById('vcTime');
+  const progressBg = document.getElementById('progressBg');
+  const fill       = document.getElementById('progressFill');
+  const thumb      = document.getElementById('progressThumb');
+  const muteBtn    = document.getElementById('muteBtn');
+  const iconVol    = document.getElementById('iconVol');
+  const iconMute   = document.getElementById('iconMute');
+  const volSlider  = document.getElementById('volumeSlider');
+  const fsBtn      = document.getElementById('fullscreenBtn');
+  const iconFs     = document.getElementById('iconFs');
+  const iconExit   = document.getElementById('iconExit');
+
+  function fmt(s) {
+    s = Math.floor(s || 0);
+    const m = Math.floor(s / 60), sec = s % 60;
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  function syncPlayUI() {
+    const paused = video.paused;
+    iconPlay.style.display  = paused ? '' : 'none';
+    iconPause.style.display = paused ? 'none' : '';
+    overlay.classList.toggle('hidden', !paused);
+    wrap.classList.toggle('paused', paused);
+  }
+
+  function togglePlay() {
+    video.paused ? video.play() : video.pause();
+  }
+
+  playBigBtn.addEventListener('click', togglePlay);
+  video.addEventListener('click', togglePlay);
+  playPause.addEventListener('click', function(e){ e.stopPropagation(); togglePlay(); });
+  video.addEventListener('play',  syncPlayUI);
+  video.addEventListener('pause', syncPlayUI);
+  video.addEventListener('ended', syncPlayUI);
+
+  video.addEventListener('timeupdate', function() {
+    if (!video.duration) return;
+    const pct = video.currentTime / video.duration * 100;
+    fill.style.width  = pct + '%';
+    thumb.style.left  = pct + '%';
+    vcTime.textContent = fmt(video.currentTime) + ' / ' + fmt(video.duration);
+  });
+
+  video.addEventListener('loadedmetadata', function() {
+    vcTime.textContent = '0:00 / ' + fmt(video.duration);
+  });
+
+  // Seek
+  let seeking = false;
+  function seek(e) {
+    const rect = progressBg.getBoundingClientRect();
+    const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    video.currentTime = pct * video.duration;
+  }
+  progressBg.addEventListener('mousedown', function(e){ seeking = true; seek(e); });
+  document.addEventListener('mousemove',   function(e){ if (seeking) seek(e); });
+  document.addEventListener('mouseup',     function()  { seeking = false; });
+
+  // Volume
+  volSlider.addEventListener('input', function() {
+    video.volume = +this.value;
+    video.muted  = video.volume === 0;
+    iconVol.style.display  = video.muted ? 'none' : '';
+    iconMute.style.display = video.muted ? '' : 'none';
+  });
+  muteBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    video.muted = !video.muted;
+    iconVol.style.display  = video.muted ? 'none' : '';
+    iconMute.style.display = video.muted ? '' : 'none';
+    volSlider.value = video.muted ? 0 : video.volume;
+  });
+
+  // Fullscreen
+  fsBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (!document.fullscreenElement) {
+      (wrap.requestFullscreen || wrap.webkitRequestFullscreen).call(wrap);
+    } else {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    }
+  });
+  document.addEventListener('fullscreenchange', function() {
+    const isFs = !!document.fullscreenElement;
+    iconFs.style.display   = isFs ? 'none' : '';
+    iconExit.style.display = isFs ? '' : 'none';
+  });
+})();
+</script>
 </body>
 </html>
