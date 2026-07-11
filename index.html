@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>陶伟 · AI 产品经理简历</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+      background: #f0f2f5;
+      color: #1a1a2e;
+      font-size: 14px;
+      line-height: 1.7;
+      padding: 32px 16px;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+      overflow: hidden;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      padding: 40px 48px 32px;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #e94560, #0f3460, #533483);
+    }
+    .header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      margin-bottom: 6px;
+    }
+    .header .intent {
+      font-size: 13px;
+      color: #e94560;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .header .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+    }
+    .header .contacts a { color: #7ec8e3; text-decoration: none; }
+    .header .contacts a:hover { color: #fff; }
+    .contacts-item { display: flex; align-items: center; gap: 6px; }
+    .contacts-item .icon { opacity: 0.7; font-size: 14px; }
+
+    /* ── Body Layout ── */
+    .body { display: grid; grid-template-columns: 260px 1fr; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      background: #f8f9fc;
+      border-right: 1px solid #eaecf0;
+      padding: 32px 24px;
+    }
+    .sidebar-section { margin-bottom: 28px; }
+    .sidebar-section h3 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #e94560;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #e94560;
+    }
+    .skill-group { margin-bottom: 14px; }
+    .skill-group .label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #555;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag {
+      background: #eef0f7;
+      color: #444;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 11.5px;
+      line-height: 1.8;
+    }
+    .tag.accent { background: #1a1a2e; color: #fff; }
+    .tag.red { background: #fdedef; color: #c0392b; }
+
+    .pm-abilities { list-style: none; }
+    .pm-abilities li {
+      font-size: 12.5px;
+      color: #444;
+      padding: 3px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .pm-abilities li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: #e94560;
+      font-size: 11px;
+    }
+
+    .edu-item .school { font-weight: 700; font-size: 13px; color: #1a1a2e; }
+    .edu-item .major { font-size: 12px; color: #666; }
+
+    /* ── Main Content ── */
+    .main { padding: 32px 36px; }
+
+    .section { margin-bottom: 30px; }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #e94560;
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #e94560;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title .icon { font-size: 14px; }
+
+    /* Summary */
+    .summary p {
+      font-size: 13.5px;
+      color: #333;
+      margin-bottom: 8px;
+      line-height: 1.8;
+    }
+    .summary p strong { color: #1a1a2e; }
+
+    /* Work experience */
+    .job { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
+    .job:last-child { border-bottom: none; padding-bottom: 0; }
+    .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+    .job-title { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+    .job-period { font-size: 12px; color: #999; white-space: nowrap; margin-left: 10px; }
+    .job-company { font-size: 12.5px; color: #e94560; font-weight: 600; margin-bottom: 8px; }
+    .job ul { list-style: none; padding: 0; }
+    .job ul li {
+      font-size: 13px;
+      color: #444;
+      padding: 2px 0 2px 16px;
+      position: relative;
+      line-height: 1.7;
+    }
+    .job ul li::before {
+      content: '·';
+      position: absolute;
+      left: 4px;
+      color: #e94560;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    .job-result {
+      margin-top: 8px;
+      background: #f8f9fc;
+      border-left: 3px solid #e94560;
+      border-radius: 0 4px 4px 0;
+      padding: 6px 12px;
+      font-size: 12.5px;
+      color: #333;
+    }
+    .job-result strong { color: #e94560; }
+
+    /* AI Projects */
+    .project-card {
+      background: #f8f9fc;
+      border: 1px solid #eaecf0;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, #e94560, #533483);
+    }
+    .project-card h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 3px;
+    }
+    .project-role {
+      font-size: 11.5px;
+      color: #e94560;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .project-card ul { list-style: none; padding: 0; }
+    .project-card ul li {
+      font-size: 12.5px;
+      color: #444;
+      padding: 2px 0 2px 14px;
+      position: relative;
+    }
+    .project-card ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #999;
+      font-size: 11px;
+    }
+    .project-result {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #e94560;
+      font-weight: 600;
+    }
+
+    /* Game table */
+    .game-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    .game-table th {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 7px 12px;
+      text-align: left;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .game-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #f0f0f0;
+      color: #444;
+      vertical-align: top;
+    }
+    .game-table tr:nth-child(even) td { background: #f8f9fc; }
+    .game-table td:first-child { font-weight: 600; color: #1a1a2e; white-space: nowrap; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 11px;
+      color: #bbb;
+      background: #f8f9fc;
+      border-top: 1px solid #eaecf0;
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>陶 伟</h1>
+    <div class="intent">AI 产品经理 · 游戏 AI 产品方向 · AI Native</div>
+    <div class="contacts">
+      <div class="contacts-item"><span class="icon">📱</span> 13521339444</div>
+      <div class="contacts-item"><span class="icon">📧</span> zr_nian_ni@163.com</div>
+      <div class="contacts-item"><span class="icon">💬</span> 微信：tw1982tw</div>
+      <div class="contacts-item"><span class="icon">💻</span>
+        <a href="https://github.com/tiandaoyuxi" target="_blank">github.com/tiandaoyuxi</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <div class="sidebar-section">
+        <h3>产品能力</h3>
+        <ul class="pm-abilities">
+          <li>用户需求分析</li>
+          <li>PRD 撰写</li>
+          <li>产品功能规划</li>
+          <li>产品 Roadmap</li>
+          <li>产品架构设计</li>
+          <li>AI Workflow 设计</li>
+          <li>Prompt 设计</li>
+          <li>Agent 设计</li>
+          <li>信息架构设计</li>
+          <li>竞品分析</li>
+          <li>用户反馈分析</li>
+          <li>产品迭代 & 验收</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>AI 能力</h3>
+        <div class="skill-group">
+          <div class="label">LLM 模型</div>
+          <div class="tags">
+            <span class="tag accent">GPT</span>
+            <span class="tag accent">Claude</span>
+            <span class="tag accent">DeepSeek</span>
+            <span class="tag">Gemini</span>
+            <span class="tag">Qwen</span>
+            <span class="tag">GLM</span>
+            <span class="tag">Llama</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="label">Agent & 框架</div>
+          <div class="tags">
+            <span class="tag red">Agent</span>
+            <span class="tag red">RAG</span>
+            <span class="tag red">MCP</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">LangGraph</span>
+            <span class="tag">AutoGen</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="label">AI 平台</div>
+          <div class="tags">
+            <span class="tag">Ollama</span>
+            <span class="tag">vLLM</span>
+            <span class="tag">ComfyUI</span>
+            <span class="tag">Dify</span>
+            <span class="tag">Coze</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="label">AIGC</div>
+          <div class="tags">
+            <span class="tag">Stable Diffusion</span>
+            <span class="tag">Flux</span>
+            <span class="tag">Hunyuan</span>
+            <span class="tag">Whisper</span>
+            <span class="tag">CosyVoice</span>
+            <span class="tag">ChatTTS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>开发技术</h3>
+        <div class="skill-group">
+          <div class="label">语言</div>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Node.js</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="label">前端</div>
+          <div class="tags">
+            <span class="tag">Vue.js</span>
+            <span class="tag">React</span>
+            <span class="tag">HTML/CSS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="label">数据库 & 部署</div>
+          <div class="tags">
+            <span class="tag">MySQL</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Linux</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>游戏生态</h3>
+        <div class="tags">
+          <span class="tag">RPG Maker MZ</span>
+          <span class="tag">SRPG Studio</span>
+          <span class="tag">Ren'Py</span>
+          <span class="tag">Alpha NET</span>
+          <span class="tag">Unity</span>
+          <span class="tag">Unreal</span>
+          <span class="tag">Blender</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>教育经历</h3>
+        <div class="edu-item">
+          <div class="school">首钢工学院</div>
+          <div class="major">计算机应用软件 · 专科</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+      <!-- Summary -->
+      <div class="section summary">
+        <div class="section-title"><span class="icon">👤</span> 个人简介</div>
+        <p>10余年企业数字化及AI应用建设经验，具备IT管理、AI平台建设、<strong>AI工具产品设计</strong>及AI产品落地的复合背景。近年来专注于大语言模型（LLM）、多模态模型、<strong>AI Agent</strong>、RAG、AIGC等方向，持续开展AI产品设计与智能工作流实践。</p>
+        <p>累计主导完成 <strong>380+ AI相关产品及工具设计</strong>，开发 <strong>150+ AI工具</strong>（其中60+具备GUI交互界面），覆盖文本、语音、图像、视频、多模态、知识库、自动化工作流等多个方向，具备从<strong>需求分析、产品设计、技术验证到落地实施</strong>的完整实践经验。</p>
+        <p>长期关注AI在游戏研发中的应用，持续研究 <strong>AI NPC Agent</strong>、多模态内容生成、AI辅助策划与美术生产工具，熟悉 RPG Maker MZ 开发流程，了解 Unity、Unreal Engine 等游戏研发生态。</p>
+      </div>
+
+      <!-- AI Projects -->
+      <div class="section">
+        <div class="section-title"><span class="icon">🚀</span> AI 产品项目经历</div>
+
+        <div class="project-card">
+          <h4>企业 AI 知识库平台</h4>
+          <div class="project-role">AI 产品负责人 + 技术负责人</div>
+          <ul>
+            <li>调研多部门需求，梳理文档检索、AI 问答、知识沉淀等使用场景</li>
+            <li>设计知识库信息架构与权限管理体系，规划 RAG 检索方案实现语义搜索</li>
+            <li>设计多模型切换能力与 AI Agent 工作流，集成 MCP 工具调用</li>
+            <li>负责 PRD 输出、功能规划、UI 设计、技术选型及项目推进全流程</li>
+          </ul>
+          <div class="project-result">✦ 企业内部落地，显著提升知识查询效率，形成统一 AI 入口</div>
+        </div>
+
+        <div class="project-card">
+          <h4>企业 AI Agent 办公平台</h4>
+          <div class="project-role">AI 产品负责人</div>
+          <ul>
+            <li>规划 AI 客服、AI 办公助手、AI 日报、AI 会议纪要、AI 翻译等 Agent 功能</li>
+            <li>设计 AI 审批流与自动化任务工作流，降低员工重复性工作</li>
+            <li>基于业务部门反馈持续迭代 Agent 对话能力与流程设计</li>
+            <li>负责产品功能规划、需求分析、交互设计、版本迭代管理</li>
+          </ul>
+          <div class="project-result">✦ 落地多个业务场景，提升办公效率，减少重复性操作</div>
+        </div>
+
+        <div class="project-card">
+          <h4>AI 内容生成平台（AIGC）</h4>
+          <div class="project-role">产品负责人</div>
+          <ul>
+            <li>设计文本、图像、视频、语音、数字人生成工作流，规划 Prompt 模板管理</li>
+            <li>整合 ComfyUI 工作流，设计 GUI 操作界面，优化 LoRA 模型管理功能</li>
+            <li>负责产品架构设计、功能规划、用户培训与内部推广</li>
+          </ul>
+          <div class="project-result">✦ 支持企业内部 AIGC 生产，显著提升内容制作效率</div>
+        </div>
+
+        <div class="project-card">
+          <h4>AI 工具产品矩阵（150+ 工具）</h4>
+          <div class="project-role">产品设计 & 开发负责人</div>
+          <ul>
+            <li>主导设计 150+ AI 工具产品，其中 60+ 具备完整 GUI 交互界面</li>
+            <li>覆盖 AI 办公、AI 生成、AI 视频处理、AI 语音、AI 图像、AI 自动化等方向</li>
+            <li>每个工具完整经历需求分析、产品规划、交互设计、开发推进、版本迭代</li>
+          </ul>
+          <div class="project-result">✦ 形成 AI 工具产品设计规范与 Prompt 工程方法论</div>
+        </div>
+      </div>
+
+      <!-- Game AI -->
+      <div class="section">
+        <div class="section-title"><span class="icon">🎮</span> 游戏 AI 研究方向</div>
+        <table class="game-table">
+          <thead>
+            <tr><th>方向</th><th>内容</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>游戏开发</td>
+              <td>RPG Maker MZ · SRPG Studio · Ren'Py · Alpha NET 多人同步框架</td>
+            </tr>
+            <tr>
+              <td>AI NPC</td>
+              <td>LLM 驱动 NPC 对话系统 · AI 角色记忆设计 · AI 剧情生成</td>
+            </tr>
+            <tr>
+              <td>AI 辅助生产</td>
+              <td>AI 辅助策划 · AI 辅助美术 · AI 辅助测试 · 游戏工具开发</td>
+            </tr>
+            <tr>
+              <td>项目实践</td>
+              <td>AI 酒吧项目（NPC 对话 + 剧情生成 + 角色记忆完整实现）</td>
+            </tr>
+            <tr>
+              <td>引擎生态</td>
+              <td>Unity（了解）· Unreal Engine（了解）· Blender（了解）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Work Experience -->
+      <div class="section">
+        <div class="section-title"><span class="icon">💼</span> 工作经历</div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">AI 总监 / AI 产品负责人（兼 IT 总监）</div>
+            <div class="job-period">2023.11 — 至今</div>
+          </div>
+          <div class="job-company">莱博塔</div>
+          <ul>
+            <li>制定企业 AI 产品路线图（Roadmap），规划 AI 能力建设方向</li>
+            <li>设计并落地企业 AI Agent 平台、AI 知识库平台、AIGC 内容平台</li>
+            <li>建设本地 LLM 推理平台（Ollama、vLLM），部署多模态 AI 能力</li>
+            <li>与业务部门共同分析需求，输出产品方案、功能设计及技术方案</li>
+            <li>推进 AI 项目实施及持续迭代优化；负责 AI 能力培训与内部推广</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">IT 主管（含 AI 方向）</div>
+            <div class="job-period">2022.9 — 2023.7</div>
+          </div>
+          <div class="job-company">海瑞鼎伦</div>
+          <ul>
+            <li>负责企业 IT 综合管理及 AIGC 生成支持工作</li>
+            <li>调研验证主流 AI 工具，探索企业 AIGC 应用场景落地试点</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">北京 IT 主管（含 AI 平台探索）</div>
+            <div class="job-period">2014.10 — 2022.9</div>
+          </div>
+          <div class="job-company">数字王国（原 PO）</div>
+          <ul>
+            <li>负责北京 IT 综合管理，支撑大型影视内容生产团队</li>
+            <li>调研并引入 AI 辅助工具，探索 AI 在内容生产中的应用</li>
+            <li>积累对大型内容生产流程的深度理解，形成 AI 产品化思维基础</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">市场部主管 → 副总经理 → 总经理</div>
+            <div class="job-period">2013.4 — 2014.10</div>
+          </div>
+          <div class="job-company">国信君宏科技有限公司</div>
+          <ul>
+            <li>负责市场、业务及公司全局管理，积累跨部门协调与产品推进经验</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">IT 主管 / 视频技术工程师</div>
+            <div class="job-period">2010.4 — 2013.4</div>
+          </div>
+          <div class="job-company">Eclipse（乐盛）</div>
+          <ul>
+            <li>负责影视后期视频技术软硬件管理（50+ 工作站、100 渲染节点）</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">IT 主管 / 音频技术工程师</div>
+            <div class="job-period">2007.10 — 2009.10</div>
+          </div>
+          <div class="job-company">Soundfirm（和声创景）</div>
+          <ul>
+            <li>负责影视后期音频技术软硬件管理，积累内容生产行业基础经验</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    陶伟 · AI产品经理 · 13521339444 · zr_nian_ni@163.com · github.com/tiandaoyuxi
+  </div>
+
+</div>
+</body>
+</html>
