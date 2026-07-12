@@ -321,6 +321,78 @@
       .video-wrap { display: none; }
     }
 
+    /* ── Mobile Responsive ── */
+    @media (max-width: 700px) {
+      body { padding: 0; font-size: 13px; }
+
+      .page { border-radius: 0; box-shadow: none; }
+
+      /* Header */
+      .header { padding: 24px 20px 20px; }
+      .header h1 { font-size: 26px; letter-spacing: 3px; }
+      .header .intent { font-size: 11px; margin-bottom: 12px; }
+      .header .tagline { font-size: 11.5px; margin-bottom: 14px; }
+      .stats-row { gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+      .stat-num { font-size: 20px; }
+      .header .contacts { gap: 10px; }
+      .contacts-item { font-size: 11.5px; }
+
+      /* Switch to single column */
+      .body { display: block; }
+
+      /* Sidebar becomes horizontal strip */
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #eaecf0;
+        padding: 20px 16px;
+      }
+      .sidebar-section { margin-bottom: 18px; }
+
+      /* Main */
+      .main { padding: 20px 16px; }
+
+      .section { margin-bottom: 22px; }
+      .section-title { font-size: 10px; margin-bottom: 10px; }
+
+      /* Summary */
+      .summary p { font-size: 12.5px; }
+
+      /* Stats grid on mobile */
+      .achievements-grid { grid-template-columns: 1fr; gap: 6px; }
+
+      /* Project cards */
+      .project-card { padding: 14px 14px 14px 18px; margin-bottom: 10px; }
+      .project-card h4 { font-size: 13.5px; }
+      .project-card ul li { font-size: 12px; }
+
+      /* Jobs */
+      .job-header { flex-direction: column; gap: 2px; }
+      .job-period { margin-left: 0; }
+      .job-title { font-size: 13.5px; }
+      .job ul li { font-size: 12px; }
+
+      /* Game table → stack on mobile */
+      .game-table thead { display: none; }
+      .game-table td { display: block; padding: 4px 8px; }
+      .game-table td:first-child {
+        background: #1a1a2e;
+        color: #fff;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 5px 8px 3px;
+      }
+      .game-table tr { display: block; margin-bottom: 8px; border: 1px solid #eaecf0; border-radius: 6px; overflow: hidden; }
+
+      /* Video */
+      .video-wrap { border-radius: 6px; }
+      .vc-volume { width: 48px; }
+      .play-big-btn { width: 56px; height: 56px; }
+
+      /* Footer */
+      .footer { font-size: 10px; padding: 12px 16px; }
+    }
+
     /* ── Video Player ── */
     .video-wrap {
       position: relative;
@@ -575,7 +647,7 @@
         <div class="section-title"><span class="icon">👤</span> 个人简介</div>
         <p>10余年企业数字化及AI应用建设经验，具备IT管理、AI平台建设、<strong>AI工具产品设计</strong>及AI产品落地的复合背景。近年来专注于大语言模型（LLM）、多模态模型、<strong>AI Agent</strong>、RAG、AIGC等方向，持续开展AI产品设计与智能工作流实践。</p>
         <p>累计主导完成 <strong>380+ AI相关产品及工具设计</strong>，开发 <strong>150+ AI工具</strong>（其中60+具备GUI交互界面），覆盖文本、语音、图像、视频、多模态、知识库、自动化工作流等多个方向，具备从<strong>需求分析、产品设计、技术验证到落地实施</strong>的完整实践经验。</p>
-        <p>长期关注AI在游戏研发中的应用，参与并主导 <a href="https://rgm.games/search" target="_blank" style="color:#e94560;text-decoration:none;font-weight:600;">RGM.games</a> AI 游戏搜索模块的产品设计与技术实现（LLM + RAG），持续研究 <strong>AI NPC Agent</strong>、多模态内容生成、AI辅助策划与美术生产工具，熟悉 RPG Maker MZ 开发流程，了解 Unity、Unreal Engine 等游戏研发生态。</p>
+        <p>长期关注AI在游戏研发中的应用，参与并主导 <a href="https://rgm.games/search" target="_blank" style="color:#e94560;text-decoration:none;font-weight:600;">RGM.games</a> AI 游戏搜索模块的产品设计与技术实现（LLM + RAG），持续研究 <strong>AI NPC Agent</strong>、多模态内容生成、AI辅助策划与美术生产工具，熟悉 RPG Maker MZ 开发流程，了解 Unity、Unreal Engine 等游戏研发生态。拥有独立工作室，长期自驱动开展 AI 产品与游戏工具的探索与实践。</p>
       </div>
 
       <!-- Portfolio Video -->
@@ -733,7 +805,7 @@
             </tr>
             <tr>
               <td>引擎生态</td>
-              <td>Unity（了解）· Unreal Engine（了解）· Blender（了解）· godot（了解）</td>
+              <td>Unity（了解）· Unreal Engine（了解）· Blender（了解）</td>
             </tr>
           </tbody>
         </table>
